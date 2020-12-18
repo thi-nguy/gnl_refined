@@ -14,13 +14,18 @@ int main(int	ac, char **av)
 		status = get_next_line(fd, &line);
 		printf("Returned value: %d\t%s\n", status, line);
 	}
-	while (ac > 1)
+	if (ac == 2)
 	{
 		fd = open(av[i], O_RDONLY);
 		line = NULL;
 		status = 1;
 		while(status)
 		{
+			if (status == -1)
+			{
+				printf("Error in opening file.\n");
+				return (0);
+			}
 			status = get_next_line(fd, &line);
 			printf("Returned value: %d\t%s\n", status, line);
 			free ((void *)line);
@@ -30,6 +35,8 @@ int main(int	ac, char **av)
 		i++;
 		ac--;
 	}
+	else
+		printf("Argument is not correct\n");
 	/* while (1); */ // Add this, then leaks a.out for memory leaks
 	return (0); 
 }

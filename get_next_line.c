@@ -56,7 +56,10 @@ int		find_n(const char *str, int c)
 int		get_line(char **str, char **line, int i)
 {
 	*line = ft_substr(*str, 0, i);
-	ft_strcpy(*str, *str + i + 1);
+	if (*line == 0)
+		return (-1);
+	if (!(ft_strcpy(*str, *str + i + 1)))
+		return (-1);
 	if (**str == '\0')
 	{
 		free(*str);
@@ -72,7 +75,7 @@ int		get_next_line(int fd, char **line)
 	int				byte_read;
 	int				i;
 
-	if (!line || fd < 0 || BUFFER_SIZE < 1 || read(fd, buff, 0) < 0) // tại sao là 0?
+	if (!line || read(fd, buff, 0) < 0) // tại sao là 0? Vi chi doc xem co ok khong chua bat dau doc.
 		return (-1);
 	if (rest && (((i = find_n(rest, '\n')) != -1)))
 		return (get_line(&rest, line, i));
