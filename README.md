@@ -11,6 +11,6 @@
 - Otherwise: compile with **main.c**: `gcc -g -Wall -Wextra -Werror -fsanitize=address main.c get_next_line.c`
 ## Files
 - *.png*: screenshot of the mindmap
-- *.emmx": mindmap of the project. Opened by Edraw Mindmaster.
+- *.emmx*: mindmap of the project. Opened by Edraw Mindmaster.
 - *.c*, *.h*: program files.
 
