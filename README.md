@@ -10,10 +10,9 @@
 - The program is able to read more than one file at a time.
 ## How it works?
 - Run **test.sh** file by `./test.sh`.
-- Otherwise: compile with: `gcc -g -Wall -Wextra -Werror -fsanitize=address main_test.c get_next_line.c get_next_line_utils.c`
-- Or with: `gcc -g -Wall -Wextra -Werror -fsanitize=address main_test.c get_next_line_bonus.c get_next_line_utils_bonus.c`
+- Otherwise: compile with: `gcc -g -Wall -Wextra -Werror -fsanitize=address -D BUFFER_SIZE=32 main_test.c get_next_line.c get_next_line_utils.c`
+- Or with: `gcc -g -Wall -Wextra -Werror -fsanitize=address -D BUFFER_SIZE=32 main_test.c get_next_line_bonus.c get_next_line_utils_bonus.c`
 ## Files
 - *.png*: screenshot of the mindmap
 - *.emmx*: mindmap of the project. Opened by Edraw Mindmaster.
 - *.c*, *.h*: program files.
-
