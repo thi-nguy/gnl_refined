@@ -75,10 +75,13 @@ int		get_next_line(int fd, char **line)
 	int				byte_read;
 	int				i;
 
-	if (!line || read(fd, buff, 0) < 0) // tại sao là 0? Vi chi doc xem co ok khong chua bat dau doc.
+	// TODO: Check error while reading file.
+	if (!line || read(fd, buff, 0) < 0) // Read 0 byte into buff.
 		return (-1);
+	// TODO: Read the rest of line into variable 'rest'.
 	if (rest && (((i = find_n(rest, '\n')) != -1)))
 		return (get_line(&rest, line, i));
+	// TODO: 
 	while (((byte_read = read(fd, buff, BUFFER_SIZE)) > 0))
 	{
 		buff[byte_read] = '\0';
