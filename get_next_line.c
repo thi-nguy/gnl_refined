@@ -54,11 +54,11 @@ int		find_n(const char *str, int c)
 }
 
 /*
-get_line(str, line, i)
-- We cut 'str' into 2 parts. One part from 0 to i we put in 'line'.
-- The other part from i+1 to the end of 'str', we put in 'str' (or 'rest').
-- Return (1) if there is no error. (-1) if error.
-*/
+   get_line(str, line, i)
+   - We cut 'str' into 2 parts. One part from 0 to i we put in 'line'.
+   - The other part from i+1 to the end of 'str', we put in 'str' (or 'rest').
+   - Return (1) if there is no error. (-1) if error.
+ */
 
 int		get_line(char **str, char **line, int i)
 {
@@ -83,29 +83,32 @@ int		get_next_line(int fd, char **line)
 	int				i;
 
 	/* TODO: Check error while reading file.
-	- If there is no 'line'.
-	- If we cannot read 0 byte into 'buff' ('read' returns value < 0).
-	- If there is error, stop program, return -1.
-	*/
+	   - If there is no 'line'.
+	   - If we cannot read 0 byte into 'buff' ('read' returns value < 0).
+	   - If there is error, stop program, return -1.
+	 */
 	if (!line || read(fd, buff, 0) < 0) // Read 0 byte into buff.
 		return (-1);
 
 	/* TODO: If there is no ERROR, something in rest, we find '\n' in rest.
-	We cut 'rest' by two parts by calling function get_line.Then END.
-	- First part before '\n' we put into 'line'
-	- Second part after '\n' we put back into 'rest'.
-	*/
+	   We cut 'rest' by two parts by calling function get_line.Then END.
+	   - First part before '\n' we put into 'line'
+	   - Second part after '\n' we put back into 'rest'.
+	 */
 	if (rest && (((i = find_n(rest, '\n')) != -1)))
 		return (get_line(&rest, line, i));
 
 	/* TODO: Read BUFFER_SIZE bytes into buff. 
-	2. End buff with '\0'
-	3. Join buff into whatever is in rest at the moment to make a 'big rest'.(rest is the variable)
-	4. If we find '\n' in 'big rest', we cut the 'big rest' by two parts by calling function get_line.Then END.
-	- First part before '\n' we put into 'line'
-	- Second part after '\n' we put back into 'rest'.
-	5. If we don't fine '\n' in 'rest', we keep reading BUFFER_SIZE bytes into buff, until an error occurs (byte_read <0)
-	*/
+	   2. End buff with '\0'
+	   3. Join buff into whatever is in rest at the moment to make a 'big
+	   rest'.(rest is the variable)
+	   4. If we find '\n' in 'big rest', we cut the 'big rest' by two parts by
+	   calling function get_line.Then END.
+	   - First part before '\n' we put into 'line'
+	   - Second part after '\n' we put back into 'rest'.
+	   5. If we don't fine '\n' in 'rest', we keep reading BUFFER_SIZE bytes
+	   into buff, until an error occurs (byte_read <0)
+	 */
 	while (((byte_read = read(fd, buff, BUFFER_SIZE)) > 0))
 	{
 		buff[byte_read] = '\0';
@@ -115,10 +118,10 @@ int		get_next_line(int fd, char **line)
 	}
 
 	/* TODO: if there is something in 'rest'.
-	- Copy what is in 'rest' to line.
-	- Free 'rest'.
-	- Return 'byte_read' and End program.
-	*/
+	   - Copy what is in 'rest' to line.
+	   - Free 'rest'.
+	   - Return 'byte_read' and End program.
+	 */
 	if (rest)
 	{
 		*line = ft_strdup(rest);
@@ -128,9 +131,9 @@ int		get_next_line(int fd, char **line)
 	}
 
 	/* TODO:
-	- Copy '\n' to line.
-	- Return 'byte_read'.
-	*/
+	   - Copy '\n' to line.
+	   - Return 'byte_read'.
+	 */
 	*line = ft_strdup("");
 	return (byte_read);
 }
