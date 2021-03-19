@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 13:35:37 by thi-nguy          #+#    #+#             */
-/*   Updated: 2021/03/19 10:17:44 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/03/19 10:59:19 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,10 +117,11 @@ int		get_next_line(int fd, char **line)
 			return (get_line(&rest, line, i));
 	}
 
-	/* TODO: if there is something in 'rest'.
+	/* Todo: if there is something in 'rest'.
 	   - Copy what is in 'rest' to line.
 	   - Free 'rest'.
 	   - Return 'byte_read' and End program.
+	   !: Should we free rest here? When we point line to rest, then free line, is it enough? Yes it is OK. Use code snipet named "" on pythontutor to see.
 	 */
 	if (rest)
 	{
