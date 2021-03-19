@@ -53,6 +53,9 @@ char	*ft_strdup(const char *s1)
 	return (s2);
 }
 
+/* TODO: ft_substr cuts original string start to start + len. Then it returns
+ * that substring part.
+ */
 char	*ft_substr(char const *s, int start, int len)
 {
 	char	*str;
@@ -72,6 +75,8 @@ char	*ft_substr(char const *s, int start, int len)
 	return (str);
 }
 
+/* TODO: ft_strcpy copies src into dst. Return dst.
+ */
 char	*ft_strcpy(char *dst, const char *src)
 {
 	int i;

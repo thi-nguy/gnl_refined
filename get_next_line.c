@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 13:35:37 by thi-nguy          #+#    #+#             */
-/*   Updated: 2020/02/11 13:03:55 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/03/19 10:17:44 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,9 +124,7 @@ int		get_next_line(int fd, char **line)
 	 */
 	if (rest)
 	{
-		*line = ft_strdup(rest);
-		free(rest);
-		rest = NULL;
+		*line = rest;
 		return (byte_read);
 	}
 
